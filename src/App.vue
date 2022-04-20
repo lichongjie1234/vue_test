@@ -64,6 +64,7 @@ export default {
       });
     },
     //测试vscode与gitee的链接
+    //测试家里电脑与公司电脑同步
   },
 };
 </script>
