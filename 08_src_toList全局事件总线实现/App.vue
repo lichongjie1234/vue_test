@@ -30,8 +30,8 @@ export default {
   },
   mounted() {
     this.$bus.$on("checkTodo", this.checkTodo);
+
     this.$bus.$on("deleteTodo", this.deleteTodo);
-    this.$bus.$on("updateTodo", this.updateTodo);
   },
   beforeDestroy() {
     this.$bus.$off(["checkTodo", "deleteTodo"]);
@@ -63,12 +63,8 @@ export default {
         return !todo.done;
       });
     },
-    //更新数据
-    updateTodo(id, data) {
-      this.todos.forEach((todo) => {
-        if (todo.id === id) todo.title = data;
-      });
-    },
+    //测试vscode与gitee的链接
+    //测试家里电脑与公司电脑同步
   },
   watch: {
     todos: {
@@ -103,12 +99,6 @@ body {
   color: #fff;
   background-color: #da4f49;
   border: 1px solid #bd362f;
-}
-.btn-edit {
-  color: #fff;
-  background-color: #2c8bb1;
-  border: 1px solid #030303;
-  margin-right: 5px;
 }
 .btn-danger:hover {
   color: #fff;
