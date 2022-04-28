@@ -26,13 +26,13 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["increment", "decrement"]),
-
-    ...mapActions(["incrementOdd", "incrementWait"]),
+    ...mapMutations("countOptions", ["increment", "decrement"]),
+    ...mapActions("countOptions", ["incrementOdd", "incrementWait"]),
   },
   computed: {
-    ...mapState(["sum", "school", "subject", "personList"]),
-    ...mapGetters(["bigSum"]),
+    ...mapState("countOptions", ["sum", "school", "subject"]),
+    ...mapState("personOptions", ["personList"]),
+    ...mapGetters("countOptions", ["bigSum"]),
   },
 };
 </script>

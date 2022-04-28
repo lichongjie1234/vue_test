@@ -3,17 +3,20 @@
     <h1>人员列表</h1>
     <input type="text" placeholder="请输入名字" v-model="name" />
     <button @click="addPerson">添加</button>
+    <button @click="addPersonWang">添加一个姓王的人</button>
+    <button @click="addPersonServer">添加一个随机的人</button>
     <ul>
       <li v-for="p in personList" :key="p.id">{{ p.name }}</li>
     </ul>
 
     <h3>上方组件的求和为：{{ sum }}</h3>
+    <h3>列表中的第一个人的姓是：{{ firstPersonName }}</h3>
   </div>
 </template>
 
 <script>
 import { nanoid } from "nanoid";
-import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
+import { mapState } from "vuex";
 export default {
   name: "Person",
   data() {
@@ -22,12 +25,26 @@ export default {
     };
   },
   computed: {
-    ...mapState(["personList", "sum"]),
+    ...mapState("personOptions", ["personList"]),
+    ...mapState("countOptions", ["sum"]),
+    firstPersonName() {
+      return this.$store.getters["personOptions/getFirstName"];
+    },
   },
   methods: {
     addPerson() {
       const personObj = { id: nanoid(), name: this.name };
-      this.$store.commit("AddPerson", personObj), (this.name = "");
+      this.$store.commit("personOptions/AddPerson", personObj),
+        (this.name = "");
+    },
+    addPersonWang() {
+      const personObj = { id: nanoid(), name: this.name };
+      this.$store.dispatch("personOptions/addPersonWang", personObj),
+        (this.name = "");
+    },
+    addPersonServer() {
+      this.$store.dispatch("personOptions/addPersonNameServer"),
+        (this.name = "");
     },
   },
 };
