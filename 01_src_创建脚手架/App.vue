@@ -14,6 +14,7 @@
         components: {
             MySchool,
             MyStudent
+          //ceshi webstorm
         }
     }
 </script>
