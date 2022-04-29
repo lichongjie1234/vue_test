@@ -34,6 +34,7 @@ export default {
         { id: "002", title: "喝酒", done: false },
         { id: "003", title: "开车", done: true },
       ],
+	  a:[]
     };
   },
   methods: {
